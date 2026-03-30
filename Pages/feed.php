@@ -1,8 +1,8 @@
 <?php
 session_start();
 require_once '../db.php';
-require_once '../classes/Post.php';
-require_once '../classes/News.php';
+require_once '../Classe/Post.php';
+require_once '../Classe/News.php';
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');

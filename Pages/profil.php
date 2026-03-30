@@ -1,8 +1,8 @@
 <?php
 session_start();
 require_once '../db.php';
-require_once '../classes/User.php';
-require_once '../classes/Interet.php';
+require_once '../Classe/User.php';
+require_once '../Classe/Interet.php';
 require_once '../classes/Competence.php';
 
 if (!isset($_SESSION['user_id'])) {
