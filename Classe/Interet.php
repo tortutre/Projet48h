@@ -1,5 +1,5 @@
 <?php
-require_once 'db.php';
+require_once __DIR__ . '/../db.php';
 
 class Interet {
     private $pdo;
@@ -27,17 +27,3 @@ class Interet {
     }
 }
 ?>
-```
-
----
-
-## Structure de tes fichiers
-```
-Projet48h/
-├── db.php
-├── User.php
-├── Post.php
-├── Message.php
-├── News.php
-├── Interet.php
-└── ylink.sql
