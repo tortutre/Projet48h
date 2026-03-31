@@ -1,0 +1,56 @@
+/* =========================================
+   VARIABLES ADMIN & RESET
+   ========================================= */
+:root {
+    --admin-primary: #2c3e50; /* Bleu nuit */
+    --admin-secondary: #34495e;
+    --admin-danger: #e74c3c; /* Rouge pour les suppressions */
+    --admin-bg: #ecf0f1;
+    --admin-white: #ffffff;
+    --admin-text: #333333;
+    --admin-border: #bdc3c7;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+body { background-color: var(--admin-bg); color: var(--admin-text); }
+
+/* =========================================
+   PAGE DE CONNEXION ADMIN
+   ========================================= */
+.admin-login-body { display: flex; height: 100vh; align-items: center; justify-content: center; background-color: var(--admin-primary); }
+.admin-login-box { background: var(--admin-white); padding: 40px; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); width: 350px; text-align: center; }
+.admin-login-box h1 { color: var(--admin-primary); font-size: 24px; margin-bottom: 20px; }
+.admin-input { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid var(--admin-border); border-radius: 5px; outline: none; }
+.admin-input:focus { border-color: var(--admin-primary); }
+.btn-admin { width: 100%; background: var(--admin-primary); color: var(--admin-white); border: none; padding: 12px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+.btn-admin:hover { background: var(--admin-secondary); }
+
+/* =========================================
+   DASHBOARD ADMIN (Layout)
+   ========================================= */
+.admin-layout { display: flex; min-height: 100vh; }
+
+.admin-sidebar { width: 250px; background-color: var(--admin-primary); color: var(--admin-white); padding: 20px 0; display: flex; flex-direction: column; }
+.admin-sidebar h2 { text-align: center; padding-bottom: 20px; border-bottom: 1px solid var(--admin-secondary); margin-bottom: 20px; font-size: 20px; letter-spacing: 1px; }
+.admin-sidebar a { color: var(--admin-white); text-decoration: none; padding: 15px 25px; display: block; transition: background 0.2s; }
+.admin-sidebar a:hover { background-color: var(--admin-secondary); border-left: 4px solid var(--admin-danger); }
+.admin-sidebar .logout-link { margin-top: auto; background-color: var(--admin-danger); text-align: center; }
+.admin-sidebar .logout-link:hover { background-color: #c0392b; border-left: none; }
+
+.admin-content { flex: 1; padding: 40px; overflow-y: auto; }
+.admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+.admin-header h1 { font-size: 28px; color: var(--admin-primary); }
+
+/* =========================================
+   TABLEAUX DE DONNÉES
+   ========================================= */
+.admin-card { background: var(--admin-white); border-radius: 8px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 30px; }
+.admin-card h3 { margin-bottom: 15px; color: var(--admin-secondary); border-bottom: 2px solid var(--admin-bg); padding-bottom: 10px; }
+
+.admin-table { width: 100%; border-collapse: collapse; }
+.admin-table th, .admin-table td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--admin-bg); }
+.admin-table th { background-color: var(--admin-bg); color: var(--admin-secondary); font-weight: bold; }
+.admin-table tr:hover { background-color: #f9fbfd; }
+
+.btn-danger { background: var(--admin-danger); color: var(--admin-white); padding: 6px 12px; border-radius: 4px; text-decoration: none; font-size: 13px; font-weight: bold; transition: 0.2s; }
+.btn-danger:hover { background: #c0392b; }

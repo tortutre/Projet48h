@@ -1,0 +1,484 @@
+/* ==========================================================================
+   1. VARIABLES & RESET GLOBAL (Thème Exotique / Dark Luxe)
+   ========================================================================== */
+:root {
+    /* Couleurs de marque */
+    --primary-color: #8E2DE2; /* Violet vibrant */
+    --primary-hover: #4A00E0; /* Bleu nuit */
+    --accent-gold:   #FFD700; /* Doré */
+    --accent-red:    #FF416C; /* Rouge / Rose vif */
+    
+    /* Couleurs de structure (Mode Sombre) */
+    --white:         #ffffff; /* Reste blanc pour le texte des boutons */
+    --app-bg:        #0B0B12; /* Fond tout à l'arrière (Très sombre) */
+    --box-bg:        #151521; /* Fond des boîtes et menus (Gris/Bleu très foncé) */
+    
+    /* Couleurs de texte et bordures */
+    --text-main:     #F3F3F8; /* Texte principal (Blanc cassé) */
+    --text-muted:    #8A8A9E; /* Texte secondaire (Gris) */
+    --border-color:  #242435; /* Lignes de séparation */
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+body { 
+    display: flex; 
+    height: 100vh; 
+    overflow: hidden; 
+    background-color: var(--app-bg); 
+    color: var(--text-main); 
+}
+
+/* ==========================================================================
+   2. SQUELETTE GLOBAL (Les 3 colonnes)
+   ========================================================================== */
+.sidebar {
+    width: 250px;
+    background: var(--box-bg);
+    border-right: 1px solid var(--border-color);
+    padding: 20px 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-logo {
+    max-width: 140px;
+    height: auto;
+    margin: 0 auto 30px auto;
+    display: block;
+}
+
+.nav-links { list-style: none; }
+.nav-links li { margin-bottom: 10px; padding: 0 20px; }
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 16px;
+    display: block;
+    padding: 12px 20px;
+    border-radius: 10px;
+    transition: background 0.2s, color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active {
+    background: rgba(142, 45, 226, 0.15); /* Fond violet léger */
+    color: var(--primary-color);
+}
+
+.main-content { 
+    flex: 1; 
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    padding: 30px; 
+    overflow-y: auto; 
+}
+.content-section { max-width: 800px; width: 100%; }
+
+.right-sidebar {
+    width: 300px;
+    background: var(--box-bg);
+    border-left: 1px solid var(--border-color);
+    padding: 20px;
+    height: 100vh;
+    overflow-y: auto;
+}
+.widget { margin-bottom: 30px; }
+.widget h3 { 
+    color: var(--text-main); 
+    font-size: 16px; 
+    margin-bottom: 15px; 
+    border-bottom: 2px solid var(--border-color); 
+    padding-bottom: 10px; 
+}
+.widget ul { list-style: none; }
+.widget ul li { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.4; }
+.widget ul li strong { color: var(--text-main); display: block; margin-bottom: 3px; }
+
+/* ==========================================================================
+   3. COMPOSANTS GLOBAUX (Boîtes, Boutons, Tags)
+   ========================================================================== */
+.box { 
+    background: var(--box-bg); 
+    border-radius: 15px; 
+    padding: 20px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+    margin-bottom: 20px; 
+}
+.box.no-padding { padding: 0; overflow: hidden; }
+
+/* Boutons Exotiques en Dégradé */
+.btn, .btn-submit, .btn-post { 
+    background: linear-gradient(135deg, var(--accent-red) 0%, var(--primary-color) 100%);
+    color: var(--white); 
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-weight: bold; 
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn:hover, .btn-submit:hover, .btn-post:hover { 
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(142, 45, 226, 0.4);
+}
+
+.btn-ai { 
+    background: linear-gradient(135deg, var(--accent-gold) 0%, #FF8008 100%); 
+    color: var(--white); 
+    font-size: 13px; 
+    margin-bottom: 25px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+}
+.btn-ai:hover { background: linear-gradient(135deg, #FF8008 0%, var(--accent-red) 100%); }
+
+.btn-edit { background: var(--app-bg); color: var(--text-main); border: 1px solid var(--border-color); }
+.btn-edit:hover { background: var(--border-color); }
+
+.logout-btn { margin-top: 40px; color: var(--accent-red) !important; background: rgba(255, 65, 108, 0.1) !important; }
+.logout-btn:hover { background: rgba(255, 65, 108, 0.2) !important; }
+
+/* Tags de compétences */
+.tag { 
+    background: rgba(142, 45, 226, 0.15); 
+    border: 1px solid rgba(142, 45, 226, 0.3);
+    padding: 5px 12px; 
+    border-radius: 20px; 
+    font-size: 13px; 
+    color: #D8B4FE; 
+    font-weight: 500; 
+}
+.tag.common { 
+    background: rgba(255, 215, 0, 0.15); 
+    border-color: rgba(255, 215, 0, 0.3);
+    color: var(--accent-gold); 
+}
+
+/* ==========================================================================
+   4. FORMULAIRES & INPUTS
+   ========================================================================== */
+.form-group { margin-bottom: 15px; text-align: left; }
+.form-group label { display: block; margin-bottom: 5px; color: var(--text-main); font-weight: bold; font-size: 14px;}
+.form-group input, .form-group select, .bio-textarea, .post-textarea, .chat-input, .skill-input { 
+    width: 100%; 
+    padding: 10px; 
+    border: 1px solid var(--border-color); 
+    border-radius: 8px; 
+    outline: none; 
+    font-size: 14px;
+    background: var(--app-bg);
+    color: var(--text-main);
+    transition: border 0.3s;
+}
+.form-group input:focus, .form-group select:focus, .bio-textarea:focus, .post-textarea:focus, .chat-input:focus { 
+    border-color: var(--primary-color); 
+}
+
+/* ==========================================================================
+   5. PAGE D'AUTHENTIFICATION
+   ========================================================================== */
+.landing-body { 
+    flex-direction: column; align-items: center; justify-content: center; 
+    background-color: var(--app-bg); color: var(--text-main); text-align: center; 
+}
+.auth-container { 
+    background: var(--box-bg); color: var(--text-main); padding: 40px; 
+    border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); width: 400px; text-align: center; 
+}
+.toggle-link { margin-top: 15px; display: block; color: var(--text-muted); font-size: 14px; text-decoration: none; }
+.toggle-link:hover { color: var(--primary-color); }
+
+/* ==========================================================================
+   6. FEED (Fil d'actualité)
+   ========================================================================== */
+.post-header { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
+.post-author { color: var(--text-main); display: block; font-size: 15px; font-weight: bold;}
+.post-time { font-size: 12px; color: var(--text-muted); }
+.post-content { color: var(--text-main); line-height: 1.6; font-size: 14px; }
+
+.post-input-container { display: flex; gap: 15px; align-items: flex-start; }
+.post-avatar { 
+    width: 45px; height: 45px; border-radius: 50%; 
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-red) 100%);
+    display: flex; align-items: center; justify-content: center; 
+    color: var(--white); font-weight: bold; font-size: 18px; flex-shrink: 0; 
+}
+.post-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; border-top: 1px solid var(--border-color); padding-top: 15px; }
+.post-actions-left { display: flex; gap: 20px; }
+.action-btn { background: none; border: none; color: var(--text-muted); font-weight: 600; font-size: 14px; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+.action-btn:hover { color: var(--primary-color); }
+
+/* ==========================================================================
+   7. YDATE (L'interface Swipe)
+   ========================================================================== */
+.swipe-section { display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 20px; }
+.profile-card { 
+    background: var(--box-bg); border-radius: 15px; border: 1px solid var(--border-color);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4); width: 350px; overflow: hidden; margin-bottom: 20px; 
+}
+.profile-pic { width: 100%; height: 350px; background-size: cover; background-position: center; border-radius: 15px 15px 0 0; }
+.profile-info { padding: 20px; }
+.profile-info h2 { margin: 5px 0; font-size: 24px; color: var(--text-main); display: flex; justify-content: space-between; align-items: center; }
+.profile-info h2 span { font-size: 18px; color: var(--primary-color); font-weight: bold; }
+
+.swipe-actions { display: flex; gap: 20px; }
+.btn-swipe { 
+    width: 60px; height: 60px; border-radius: 50%; border: none; font-size: 24px; cursor: pointer; 
+    display: flex; align-items: center; justify-content: center; 
+    background: var(--box-bg); border: 1px solid var(--border-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: transform 0.2s; 
+}
+.btn-swipe:hover { transform: scale(1.1); }
+.btn-nope { color: var(--accent-red); }
+.btn-like { color: #1dd1a1; }
+
+/* ==========================================================================
+   8. MESSAGERIE (Theme Dark Luxe)
+   ========================================================================== */
+.chat-container { 
+    display: flex; 
+    height: 650px; 
+    background: var(--box-bg); 
+    border-radius: 20px; 
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); /* Ombre plus profonde */
+    overflow: hidden; 
+    border: 1px solid var(--border-color); 
+}
+
+/* --- LISTE DES CONTACTS (GAUCHE) --- */
+.contact-list { 
+    width: 320px; 
+    border-right: 1px solid var(--border-color); 
+    background: var(--box-bg); 
+    display: flex; 
+    flex-direction: column; 
+}
+
+.contact-list-header { 
+    padding: 20px; 
+    font-weight: 700; 
+    font-size: 20px; 
+    color: var(--text-main); 
+    border-bottom: 1px solid var(--border-color); 
+    background: rgba(0,0,0,0.2); /* Légère différence de fond pour le header */
+}
+
+/* On force la couleur du lien "Nouveau Message" pour contrer le PHP */
+.contact-list a[href="search_users.php"] {
+    color: var(--primary-color) !important;
+}
+.contact-list a[href="search_users.php"]:hover {
+    background: rgba(142, 45, 226, 0.1) !important;
+}
+
+.contact-item { 
+    padding: 15px 20px; 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    border-bottom: 1px solid var(--border-color); 
+    cursor: pointer; 
+    transition: all 0.2s ease; 
+}
+.contact-item:hover { 
+    background: rgba(255, 255, 255, 0.02); 
+}
+.contact-item.active { 
+    border-left: 4px solid var(--primary-color); 
+    background: rgba(142, 45, 226, 0.08); 
+}
+
+.contact-avatar { 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Donne du relief aux ronds de profil */
+}
+
+.contact-info { overflow: hidden; }
+.contact-name { color: var(--text-main); font-size: 15px; font-weight: bold;}
+.contact-preview { display: block; font-size: 13px; color: var(--text-muted); margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
+
+/* --- ZONE DE CHAT (DROITE) --- */
+.chat-area { 
+    flex: 1; 
+    display: flex; 
+    flex-direction: column; 
+    background: var(--app-bg); /* Un fond un poil plus sombre pour contraster avec les bulles */
+}
+
+.chat-header { 
+    padding: 20px; 
+    background: var(--box-bg); 
+    border-bottom: 1px solid var(--border-color); 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+}
+
+/* 🚨 TRICK MAGIQUE : On force le texte à être clair même si le PHP dit de le mettre en dark-bg */
+.chat-header strong { color: var(--text-main) !important; }
+.chat-header small { color: var(--text-muted) !important; }
+
+/* Zone des messages avec une scrollbar premium invisible */
+.chat-messages { 
+    flex: 1; 
+    padding: 25px; 
+    overflow-y: auto; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+}
+.chat-messages::-webkit-scrollbar { width: 6px; }
+.chat-messages::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
+
+/* --- BULLES DE MESSAGES --- */
+.bubble { 
+    max-width: 70%; 
+    padding: 14px 18px; 
+    font-size: 14px; 
+    line-height: 1.5; 
+    position: relative; 
+    transition: transform 0.2s;
+}
+.bubble:hover { transform: translateY(-2px); } /* Petit effet de survol stylé */
+
+.bubble-received { 
+    align-self: flex-start; 
+    background: var(--box-bg); 
+    color: var(--text-main); 
+    border: 1px solid var(--border-color); 
+    border-radius: 18px 18px 18px 4px; /* Coin carré en bas à gauche */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.bubble-sent { 
+    align-self: flex-end; 
+    background: linear-gradient(135deg, var(--accent-red) 0%, var(--primary-color) 100%); 
+    color: var(--white); 
+    border-radius: 18px 18px 4px 18px; /* Coin carré en bas à droite */
+    box-shadow: 0 5px 15px rgba(142, 45, 226, 0.25); 
+}
+
+/* --- ZONE DE SAISIE --- */
+.chat-input-area { 
+    padding: 20px; 
+    background: var(--box-bg); 
+    border-top: 1px solid var(--border-color); 
+    display: flex; 
+    gap: 15px; 
+    align-items: center;
+}
+
+.chat-input { 
+    flex: 1; 
+    padding: 15px 22px; 
+    border-radius: 25px; 
+    background: var(--app-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    transition: all 0.3s;
+}
+.chat-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(142, 45, 226, 0.2);
+}
+
+.btn-send { 
+    border-radius: 25px; 
+    padding: 0 25px; 
+    height: 48px; /* Aligne parfaitement le bouton avec l'input */
+}
+/* ==========================================================================
+   9. PROFIL & ÉDITION
+   ========================================================================== */
+.profile-header { position: relative; margin-bottom: 60px; }
+.cover-photo { width: 100%; height: 180px; background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary-color) 50%, var(--accent-red) 100%); border-radius: 15px 15px 0 0; }
+.profile-avatar { 
+    width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--box-bg); 
+    background-color: #333; background-size: cover; position: absolute; bottom: -50px; left: 30px; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5); 
+}
+.profile-actions { position: absolute; bottom: -40px; right: 20px; display: flex; gap: 10px; }
+
+.profile-body { padding: 0 30px 30px 30px; }
+.profile-name { color: var(--text-main); font-size: 26px; font-weight: bold;}
+.profile-role { margin-bottom: 20px; font-weight: bold; color: var(--primary-color); }
+
+.box-title { margin-bottom: 15px; color: var(--text-main); font-size: 18px; border-bottom: 2px solid var(--border-color); padding-bottom: 5px; display: inline-block;}
+.interests { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+
+.add-skill-form { display: flex; gap: 10px; margin-top: 15px; max-width: 300px; }
+.btn-add-skill { border-radius: 50%; width: 35px; height: 35px; padding: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+/* ==========================================================================
+   10. ANIMATIONS (Optionnel)
+   ========================================================================== */
+.ripple-effect {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    animation: rippleAnim 0.6s linear;
+    pointer-events: none;
+}
+@keyframes rippleAnim {
+    to { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+}
+
+
+/* ==========================================================================
+   11. PAGE DE RECHERCHE D'UTILISATEURS (Dark Luxe)
+   ========================================================================== */
+
+/* Forcer le fond sombre sur les cartes de résultats */
+.user-search-card, 
+.search-result-card,
+.search-container + div > div { /* Cible la carte même si le nom de classe varie */
+    background: var(--box-bg) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 15px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Effet au survol de la carte */
+.user-search-card:hover,
+.search-result-card:hover {
+    transform: translateY(-2px);
+    border-color: #8E2DE2 !important; /* Accentuer la bordure en violet au survol */
+    box-shadow: 0 5px 15px rgba(142, 45, 226, 0.2) !important;
+}
+
+/* Forcer le nom (Texte principal) en blanc cassé */
+.user-search-card h4, 
+.user-search-card strong,
+.search-result-card h4,
+.search-result-card strong {
+    color: #8E2DE2 !important; /* Violet vibrant pour les noms */
+    font-size: 16px;
+    margin-bottom: 4px;
+    display: block;
+}
+
+/* Forcer les infos (Promo/Filière) en gris clair */
+.user-search-card p, 
+.user-search-card small,
+.search-result-card p,
+.search-result-card small {
+    color: var(--text-muted) !important;
+    font-size: 13px;
+    margin: 0 !important;
+}
+
